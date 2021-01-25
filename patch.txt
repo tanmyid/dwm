@@ -1,3 +1,4 @@
 - alwayscenter
 - fullgaps
 - gaplessgrid
+- pertag
