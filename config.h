@@ -1,4 +1,16 @@
 /* See LICENSE file for copyright and license details. */
+
+#include <X11/XF86keysym.h>
+
+/* volume control */
+static const char *upvol[]   = { "amixer","-D", "pulse", "set", "Master", "10%+", NULL };
+static const char *downvol[] = { "amixer","-D", "pulse", "set", "Master", "10%-", NULL };
+static const char *mutevol[] = { "amixer", "set", "Master", "toggle", NULL };
+
+/* screen brightness */
+static const char *brupcmd[] = { "brightnessctl", "set", "10%+", NULL };
+static const char *brdowncmd[] = { "brightnessctl", "set", "10%-", NULL };
+
 #include "gaplessgrid.c"
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -63,6 +75,11 @@ static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ 0,         XF86XK_AudioLowerVolume,      spawn, 	       {.v = downvol } },
+	{ 0,                XF86XK_AudioMute,      spawn, 	       {.v = mutevol } },
+	{ 0,         XF86XK_AudioRaiseVolume,      spawn, 	       {.v = upvol   } },
+	{ 0, 		      XF86XK_MonBrightnessUp,      spawn,          {.v = brupcmd} },
+	{ 0, 		    XF86XK_MonBrightnessDown,      spawn,          {.v = brdowncmd} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,						XK_e,	   spawn,	   	   SHCMD("pcmanfm")},
 	{ MODKEY,                       XK_Print,                  spawn,          SHCMD("scrot 'Screenshot_%Y-%m-%d_%H-%M-%S.png' -e 'mv *.png ~/Pictures/Screenshot'; notify-send 'Scrot' 'Screen has been captured!'") },
