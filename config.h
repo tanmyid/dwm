@@ -5,7 +5,7 @@
 /* volume control */
 static const char *upvol[]   = { "amixer","-D", "pulse", "set", "Master", "10%+", NULL };
 static const char *downvol[] = { "amixer","-D", "pulse", "set", "Master", "10%-", NULL };
-static const char *mutevol[] = { "amixer", "set", "Master", "toggle", NULL };
+static const char *mutevol[] = { "amixer", "D", "pulse", "set", "Master", "toggle", NULL };
 
 /* screen brightness */
 static const char *brupcmd[] = { "brightnessctl", "set", "10%+", NULL };
