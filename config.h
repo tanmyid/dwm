@@ -8,8 +8,8 @@ static const char *downvol[] = { "amixer","-D", "pulse", "set", "Master", "10%-"
 static const char *mutevol[] = { "amixer", "D", "pulse", "set", "Master", "toggle", NULL };
 
 /* screen brightness */
-static const char *brupcmd[] = { "brightnessctl", "set", "10%+", NULL };
-static const char *brdowncmd[] = { "brightnessctl", "set", "10%-", NULL };
+static const char *brupcmd[] = { "brightnessctl", "set", "5%+", NULL };
+static const char *brdowncmd[] = { "brightnessctl", "set", "5%-", NULL };
 
 #include "gaplessgrid.c"
 /* appearance */
@@ -82,7 +82,8 @@ static Key keys[] = {
 	{ 0, 		    XF86XK_MonBrightnessDown,      spawn,          {.v = brdowncmd} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,						XK_e,	   spawn,	   	   SHCMD("pcmanfm")},
-	{ MODKEY,                       XK_Print,                  spawn,          SHCMD("scrot 'Screenshot_%Y-%m-%d_%H-%M-%S.png' -e 'mv *.png ~/Pictures/Screenshot'; notify-send 'Scrot' 'Screen has been captured!'") },
+	{ MODKEY,                       XK_s,       spawn,          SHCMD("subl")},
+	{ MODKEY,                       XK_Print,                  spawn,          SHCMD("scrot 'Screenshot_%Y-%m-%d_%H-%M-%S.png' -e 'mv *.png ~/Pictures/Screenshot'; notify-send 'Screen has been captured!'") },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
