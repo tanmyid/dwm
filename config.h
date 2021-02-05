@@ -3,8 +3,8 @@
 #include <X11/XF86keysym.h>
 
 /* volume control */
-static const char *upvol[]   = { "amixer","-D", "pulse", "set", "Master", "10%+", NULL };
-static const char *downvol[] = { "amixer","-D", "pulse", "set", "Master", "10%-", NULL };
+static const char *upvol[]   = { "amixer","-D", "pulse", "set", "Master", "7%+", NULL };
+static const char *downvol[] = { "amixer","-D", "pulse", "set", "Master", "7%-", NULL };
 static const char *mutevol[] = { "amixer", "D", "pulse", "set", "Master", "toggle", NULL };
 
 /* screen brightness */
@@ -14,7 +14,7 @@ static const char *brdowncmd[] = { "brightnessctl", "set", "5%-", NULL };
 #include "gaplessgrid.c"
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 30;        /* gaps between windows */
+static const unsigned int gappx     = 15;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -72,6 +72,7 @@ static const Layout layouts[] = {
 static char dmenumon[3] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *sscmd[] = { "/home/tan/.local/bin/flameshot-imgck", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -81,9 +82,9 @@ static Key keys[] = {
 	{ 0, 		      XF86XK_MonBrightnessUp,      spawn,          {.v = brupcmd} },
 	{ 0, 		    XF86XK_MonBrightnessDown,      spawn,          {.v = brdowncmd} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,						XK_e,	   spawn,	   	   SHCMD("pcmanfm")},
-	{ MODKEY,                       XK_s,       spawn,          SHCMD("subl")},
-	{ MODKEY,                       XK_Print,                  spawn,          SHCMD("scrot 'Screenshot_%Y-%m-%d_%H-%M-%S.png' -e 'mv *.png ~/Pictures/Screenshot'; notify-send 'Screen has been captured!'") },
+	{ MODKEY,						XK_e,	   spawn,	   	   SHCMD("thunar")},
+	{ MODKEY,                       XK_s,      spawn,          SHCMD("subl3")},
+	{ MODKEY,                       XK_Print,  spawn,          {.v = sscmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
