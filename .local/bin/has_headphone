@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# PulseAudio
+pacmd list-sinks | grep 'Headphones' | awk '{print $10}' | tr -d ')'
