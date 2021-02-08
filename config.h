@@ -1,5 +1,4 @@
 /* See LICENSE file for copyright and license details. */
-
 #include <X11/XF86keysym.h>
 
 /* volume control */
@@ -75,23 +74,26 @@ static char dmenumon[3] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *sscmd[] = { "/home/tan/.local/bin/flameshot-imgck", NULL };
-static const char *menucmd[] = {"/home/tan/.local/bin/menu.sh", NULL };
+// static const char *menucmd[] = {"/home/tan/.local/bin/menu.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	/* staticcmd */ 
 	{ 0,         XF86XK_AudioLowerVolume,      spawn, 	       {.v = downvol } },
-	{ 0,                XF86XK_AudioMute,      spawn, 	       {.v = mutevol } },
+	{ 0,         XF86XK_AudioMute,		       spawn, 	       {.v = mutevol } },
 	{ 0,         XF86XK_AudioRaiseVolume,      spawn, 	       {.v = upvol   } },
-	{ 0, 		      XF86XK_MonBrightnessUp,      spawn,          {.v = brupcmd} },
-	{ 0, 		    XF86XK_MonBrightnessDown,      spawn,          {.v = brdowncmd} },
+	{ 0, 		 XF86XK_MonBrightnessUp,       spawn,          {.v = brupcmd} },
+	{ 0, 		 XF86XK_MonBrightnessDown,     spawn,          {.v = brdowncmd} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_Print,  spawn,          {.v = sscmd } },
+	// { MODKEY,                       XK_x,      spawn,          {.v = menucmd } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	/* shcmd */ 
+	{ MODKEY,						XK_x,	   spawn,	   	   SHCMD("rofi -show {drun,window} -theme /home/tan/.config/rofi/themes/minimal.rasi")},
 	{ MODKEY,						XK_e,	   spawn,	   	   SHCMD("thunar")},
 	{ MODKEY,                       XK_s,      spawn,          SHCMD("subl3")},
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("networkmanager_dmenu")},
-	{ MODKEY,                       XK_Print,  spawn,          {.v = sscmd } },
-	{ 0,							XK_Print,   spawn,	   	   SHCMD("scrot 'Screenshot_%Y-%m-%d_%H-%M-%S.png' -e 'mv *.png ~/Pictures/Screenshot/'; notify-send 'Scrot' 'Screen has been captured!'") },
-	{ MODKEY,                       XK_x,      spawn,          {.v = menucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ 0,							XK_Print,  spawn,	   	   SHCMD("scrot 'Screenshot_%Y-%m-%d_%H-%M-%S.png' -e 'mv *.png ~/Pictures/Screenshot/'; notify-send 'Scrot' 'Screen has been captured!'") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
