@@ -74,6 +74,8 @@ static char dmenumon[3] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *sscmd[] = { "/home/tan/.local/bin/flameshot-imgck", NULL };
+static const char *dark[] = { "/home/tan/.local/bin/dark.sh", NULL };
+static const char *light[] = { "/home/tan/.local/bin/light.sh", NULL };
 // static const char *menucmd[] = {"/home/tan/.local/bin/menu.sh", NULL };
 
 static Key keys[] = {
@@ -86,7 +88,9 @@ static Key keys[] = {
 	{ 0, 		 XF86XK_MonBrightnessDown,     spawn,          {.v = brdowncmd} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Print,  spawn,          {.v = sscmd } },
-	// { MODKEY,                       XK_x,      spawn,          {.v = menucmd } },
+	{ MODKEY|ShiftMask,             XK_d,  	   spawn,          {.v = dark } },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = light } },
+//	{ MODKEY,                       XK_x,      spawn,          {.v = menucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	/* shcmd */ 
 	{ MODKEY,						XK_x,	   spawn,	   	   SHCMD("rofi -show {drun,window} -theme /home/tan/.config/rofi/themes/minimal.rasi")},
