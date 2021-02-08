@@ -39,9 +39,9 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       0,       0,           -1 },
+	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
+	{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           0,           -1 },
 };
 
 /* layout(s) */
@@ -55,6 +55,8 @@ static const Layout layouts[] = {
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 	{ "[::]",      gaplessgrid },
+	{ "| = |",      centeredmaster },
+	{ ">M>",      centeredfloatingmaster },
 };
 
 /* key definitions */
@@ -84,10 +86,10 @@ static Key keys[] = {
 	{ 0, 		    XF86XK_MonBrightnessDown,      spawn,          {.v = brdowncmd} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,						XK_e,	   spawn,	   	   SHCMD("thunar")},
-	{ 0,						XK_Print,	   spawn,	   	   SHCMD("scrot 'Screenshot_%Y-%m-%d_%H-%M-%S.png' -e 'mv *.png ~/Pictures/Screenshot/'; notify-send 'Scrot' 'Screen has been captured!'") },
 	{ MODKEY,                       XK_s,      spawn,          SHCMD("subl3")},
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("networkmanager_dmenu")},
 	{ MODKEY,                       XK_Print,  spawn,          {.v = sscmd } },
+	{ 0,							XK_Print,   spawn,	   	   SHCMD("scrot 'Screenshot_%Y-%m-%d_%H-%M-%S.png' -e 'mv *.png ~/Pictures/Screenshot/'; notify-send 'Scrot' 'Screen has been captured!'") },
 	{ MODKEY,                       XK_x,      spawn,          {.v = menucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -104,6 +106,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_o,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
