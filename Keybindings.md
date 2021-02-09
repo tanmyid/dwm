@@ -2,6 +2,8 @@
 
 Simple keybinding (keyboard shortcut) from me to dwm.
 
+[![Screenshot-2021-02-09-14-00-34.png](https://i.postimg.cc/g01SDLfw/Screenshot-2021-02-09-14-00-34.png)](https://postimg.cc/sB94fxfy)
+
 - `XF86XK_AudioLowerVolume` set volume (down).
 - `XF86XK_AudioMute` set volume (mute).
 - `XF86XK_AudioRaiseVolume ` set volume (up).
