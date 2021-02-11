@@ -97,7 +97,7 @@ static Key keys[] = {
 	{ MODKEY,						XK_e,	   spawn,	   	   SHCMD("thunar")},
 	{ MODKEY,                       XK_s,      spawn,          SHCMD("subl3")},
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("networkmanager_dmenu")},
-	{ 0,							XK_Print,  spawn,	   	   SHCMD("scrot 'Screenshot_%Y-%m-%d_%H-%M-%S.png' -e 'mv *.png ~/Pictures/Screenshot/'; notify-send 'Scrot' 'Screen has been captured!'") },
+//	{ 0,							XK_Print,  spawn,	   	   SHCMD("scrot 'Screenshot_%Y-%m-%d_%H-%M-%S.png' -e 'mv *.png ~/Pictures/Screenshot/'; notify-send 'Scrot' 'Screen has been captured!'") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
