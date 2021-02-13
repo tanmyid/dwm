@@ -2,6 +2,6 @@
 
 # For dwmstatus
 while true; do
-    xsetroot -name " $($HOME/.local/bin/network-wlan-tfc.sh)|$($HOME/.local/bin/memory.sh) $($HOME/.local/bin/filesystem.sh) $($HOME/.local/bin/volume.sh) $(date +" %d %b %H:%M") $($HOME/.local/bin/bat-state.sh) $($HOME/.local/bin/bat-capacity.sh)  TANMYID "
+    xsetroot -name " // $($HOME/.local/bin/network-wlan-tfc.sh) // $($HOME/.local/bin/volume.sh) // $(date +" %d %b %H:%M") // $($HOME/.local/bin/bat-state.sh) $($HOME/.local/bin/bat-capacity.sh) //  TANMYID "
     sleep 1
 done
