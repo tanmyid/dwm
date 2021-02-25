@@ -6,6 +6,9 @@ static const char *upvol[]   = { "/home/tan/.local/bin/notify/change-volume", "u
 static const char *downvol[] = { "/home/tan/.local/bin/notify/change-volume", "down", NULL };
 static const char *mutevol[] = { "/home/tan/.local/bin/notify/change-volume", "mute", NULL };
 
+/* power menu*/
+static const char *powercmd[] = { "/home/tan/.config/rofi/scripts/powermenu.sh", NULL };
+
 /* screen brightness */
 static const char *brupcmd[] = { "/home/tan/.local/bin/notify/change-brightness", "up", NULL };
 static const char *brdowncmd[] = { "/home/tan/.local/bin/notify/change-brightness", "down", NULL };
@@ -92,6 +95,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = light } },
 //	{ MODKEY,                       XK_x,      spawn,          {.v = menucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,		                XK_Delete, spawn,          {.v = powercmd } },
 	/* shcmd */ 
 	{ MODKEY,						XK_x,	   spawn,	   	   SHCMD("rofi -show {drun,window} -theme /home/tan/.config/rofi/themes/minimal.rasi")},
 	{ MODKEY,						XK_e,	   spawn,	   	   SHCMD("thunar")},
