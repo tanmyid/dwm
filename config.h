@@ -56,8 +56,8 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
-	{ "[::]",      gaplessgrid },
-	{ "| = |",      centeredmaster },
+	{ "[=]",      gaplessgrid },
+	{ "|'='|",      centeredmaster },
 	{ ">M>",      centeredfloatingmaster },
 };
 
