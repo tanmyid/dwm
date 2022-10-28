@@ -1,6 +1,6 @@
 # dwm - dynamic window manager
 # See LICENSE file for copyright and license details.
-
+# another command on makefile; hacktoberfest purpose
 include config.mk
 
 SRC = drw.c dwm.c util.c
